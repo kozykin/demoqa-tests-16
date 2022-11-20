@@ -3,10 +3,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class practiceFormTest {
+public class PracticeFormTest {
 
     private String firstName = "Ivan";
     private String lastName = "Ivanov";
@@ -21,7 +20,11 @@ public class practiceFormTest {
 
     @Test
     void formTest() {
+
         open("https://demoqa.com/automation-practice-form");
+
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
