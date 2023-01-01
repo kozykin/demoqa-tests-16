@@ -1,5 +1,6 @@
 plugins {
-    id "java-library"
+    id 'java-library'
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 repositories {
@@ -12,12 +13,44 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     testImplementation (
+            'io.qameta.allure:allure-selenide:2.20.0',
             'com.github.javafaker:javafaker:1.0.2',
             'com.codeborne:selenide:6.9.0',
-            'org.junit.jupiter:junit-jupiter-api:5.9.0')
+            'org.junit.jupiter:junit-jupiter:5.9.0')
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
-test {
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
+
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task smoke_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
+
+test {
+    systemProperties(System.getProperties())
 }
