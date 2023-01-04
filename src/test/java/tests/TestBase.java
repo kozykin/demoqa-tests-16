@@ -16,14 +16,14 @@ public class TestBase {
     TestData testData = new TestData();
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = System.getProperty("permission", "1920x1080");
+        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browser_ver", "100.0");
         Configuration.timeout = 10000;
         Configuration.remote = System.getProperty("host", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("browserVersion", System.getProperty("version", "100.0"));;
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
