@@ -36,8 +36,8 @@ allure {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
-
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -50,8 +50,4 @@ task smoke_tests(type: Test) {
     useJUnitPlatform {
         includeTags("smoke")
     }
-}
-
-test {
-    systemProperties(System.getProperties())
 }

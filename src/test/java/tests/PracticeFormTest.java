@@ -1,9 +1,12 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 public class PracticeFormTest extends TestBase{
 
     @Test
+    @Tag("smoke")
     void formTest() {
 
         registrationPage.openPage()
