@@ -22,11 +22,9 @@ public class PracticeFormTest extends TestBase{
                 .setAddress(testData.userLocation)
                 .setState(testData.userState)
                 .setCity(testData.userCity)
-                .clickSubmit();
-
-        registrationPage.verifyResultModalAppears();
-
-        registrationPage.verifyResult("Student Name", testData.firstName + ' ' + testData.lastName)
+                .clickSubmit()
+                .verifyResultModalAppears()
+                .verifyResult("Student Name", testData.firstName + ' ' + testData.lastName)
                 .verifyResult("Student Email", testData.userEmail)
                 .verifyResult("Gender", testData.userGender)
                 .verifyResult("Mobile", testData.userPhone)
