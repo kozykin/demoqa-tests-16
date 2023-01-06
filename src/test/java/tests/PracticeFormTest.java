@@ -1,10 +1,11 @@
 package tests;
 
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
-public class PracticeFormTest extends TestBase{
+import pages.RegistrationPage;
 
+public class PracticeFormTest extends TestBase{
+    RegistrationPage registrationPage = new RegistrationPage();
     @Test
     @Tag("smoke")
     void formTest() {

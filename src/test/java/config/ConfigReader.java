@@ -1,6 +1,5 @@
 package config;
 
-//import config.WebConfig;
 import org.aeonbits.owner.ConfigFactory;
 
 public enum ConfigReader {

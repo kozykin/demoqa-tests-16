@@ -9,13 +9,10 @@ import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.RegistrationPage;
 import testdata.TestData;
 
 public class TestBase {
-    RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
-
     private static final WebConfig webConfig = ConfigReader.Instance.read();
     @BeforeAll
     static void beforeAll() {
